@@ -27,9 +27,6 @@ class LandingPage extends StatelessWidget {
                 if (snapshot.connectionState != ConnectionState.done) {
                   return const LoadingScreen();
                 }
-                // if (snapshot.data == null || user.uid == null) {
-                //   return const LoadingScreen();
-                // }
                 return Provider<UserModel>.value(
                   value: UserModel(displayName: snapshot.data, uid: user.uid),
                   child: MultiProvider(

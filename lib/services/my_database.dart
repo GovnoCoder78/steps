@@ -34,7 +34,7 @@ class MyDatabase with ChangeNotifier {
   }
 
   Future<void> updatePoints() async {
-    _points = points + 1;
+    _points = points + 10;
     _firestore.collection("users").doc(uid).update({"points": _points});
     notifyListeners();
   }

@@ -5,7 +5,9 @@ import 'package:flutter_steps_tracker/services/my_database.dart';
 import 'package:flutter_steps_tracker/utils/colors.dart';
 import 'package:flutter_steps_tracker/utils/show_snack_bar.dart';
 import 'package:flutter_steps_tracker/widgets/avatar.dart';
+import 'package:flutter_steps_tracker/app/landing_page.dart';
 import 'package:provider/provider.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key, required this.menuScreenContext});
@@ -24,14 +26,38 @@ class ProfileScreen extends StatelessWidget {
     }
   }
 
+  Future<void> _signOut(BuildContext context) async {
+    try {
+      await FirebaseAuth.instance.signOut();
+      // Перенаправьте пользователя на экран входа или другой экран после выхода
+      Navigator.push
+        (context,
+        MaterialPageRoute(builder: (context) => const LandingPage()
+        )
+      );
+    } catch (e) {
+      showSnackBar(context, "Failed to sign out: $e");
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
+          actions: [
+            TextButton(
+              onPressed: () => _signOut(context),
+              child: const Text(
+                'Log Out',
+                style: TextStyle(color: Colors.white,
+                fontSize: 16),
+              ),
+            ),
+          ],
           backgroundColor: darkGrey,
           bottom: PreferredSize(
-            preferredSize: const Size.fromHeight(100),
+            preferredSize: const Size.fromHeight(110),
             child: Column(
               children: const <Widget>[
                 Avatar(
