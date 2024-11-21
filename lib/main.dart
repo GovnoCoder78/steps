@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
       create: (context) => Auth(),
       child: MaterialApp(
           debugShowCheckedModeBanner: false,
-          title: 'Steps Tracker',
+          title: 'Шагомер',
           theme: ThemeData.dark().copyWith(
             scaffoldBackgroundColor: mobileBackgroundColor,
           ),

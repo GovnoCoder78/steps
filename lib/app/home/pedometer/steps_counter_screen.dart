@@ -87,7 +87,7 @@ class _StepsCounterScreenState extends State<StepsCounterScreen> {
         Provider.of<MyDatabase>(context, listen: false).updateSteps(steps);
       }
       return Text(
-        "You walked ${steps} steps",
+        "Вы прошли ${steps} шагов! Так держать",
         style: const TextStyle(fontSize: 20),
       );
     }
@@ -100,12 +100,12 @@ class _StepsCounterScreenState extends State<StepsCounterScreen> {
       child: Scaffold(
         appBar: AppBar(
           backgroundColor: darkGrey,
-          title: const Text("Steps Counter"),
+          title: const Text("Шагомер"),
           actions: [
             IconButton(
                 onPressed: () {
                   showSnackBar(context,
-                      "For each 10 steps you walk, you get 50 Health points");
+                      "За каждые 10 шагов ты получишь 10 монет. Монеты можно обменять на реальные призы");
                 },
                 icon: const Icon(Icons.question_mark_rounded))
           ],

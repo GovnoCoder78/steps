@@ -36,19 +36,19 @@ class _HomePageState extends State<HomePage> {
   List<PersistentBottomNavBarItem> _navBarsItems() => [
         PersistentBottomNavBarItem(
           icon: const Icon(Icons.directions_run),
-          title: "Steps Counter",
+          title: "Шагомер",
           activeColorPrimary: activeColor,
           inactiveColorPrimary: Colors.grey,
         ),
         PersistentBottomNavBarItem(
           icon: const Icon(Icons.shop),
-          title: "Shop",
+          title: "Магазин",
           activeColorPrimary: activeColor,
           inactiveColorPrimary: Colors.grey,
         ),
         PersistentBottomNavBarItem(
           icon: const Icon(Icons.person),
-          title: "Profile",
+          title: "Профиль",
           activeColorPrimary: activeColor,
           inactiveColorPrimary: Colors.grey,
         ),

@@ -45,10 +45,10 @@ class _SignInPageState extends State<SignInPage> {
 
   Future<void> _signInAnonymously() async {
     if (_name.length < 5) {
-      showSnackBar(context, "Your name should be at lease 5 characters long");
+      showSnackBar(context, "Ваше имя должно быть не короче 5 символов");
       return;
     } else if (_name.length > 15) {
-      showSnackBar(context, "Your name shouldn't exceed 15 characters");
+      showSnackBar(context, "Введите имя короче 15 символов");
       return;
     }
     try {
@@ -63,7 +63,7 @@ class _SignInPageState extends State<SignInPage> {
       return const LoadingScreen();
     } else {
       return const Text(
-        'Sign in page',
+        'Аутентификация',
         textAlign: TextAlign.center,
         style: TextStyle(
           fontSize: 32.0,
@@ -88,7 +88,7 @@ class _SignInPageState extends State<SignInPage> {
           TextFieldInput(
             onEditingComplete:
                 widget.isLoading ? null : () => _signInAnonymously(),
-            hintText: 'Enter your name',
+            hintText: 'Ваше имя',
             textInputType: TextInputType.text,
             textEditingController: _nameController,
             isEnabled: widget.isLoading ? false : true,
@@ -109,7 +109,7 @@ class _SignInPageState extends State<SignInPage> {
                 color: widget.isLoading ? secondaryColor : cardBackground,
               ),
               child: const Text(
-                'Log in',
+                'Войти',
               ),
             ),
           ),
@@ -122,7 +122,7 @@ class _SignInPageState extends State<SignInPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Time Tracker'),
+        title: const Text('Шагомер'),
         elevation: 2.0,
       ),
       body: _buildContent(context),

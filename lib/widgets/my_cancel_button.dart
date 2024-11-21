@@ -9,7 +9,7 @@ class MyCancelButton extends StatelessWidget {
     return GestureDetector(
       onTap: onTap ?? () => Navigator.of(context).pop(),
       child: const Text(
-        'Cancel',
+        'Отменить',
         style: TextStyle(
             fontSize: 14, color: alertTextColor, fontWeight: FontWeight.w400),
       ),

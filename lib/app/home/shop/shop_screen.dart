@@ -13,7 +13,7 @@ class ShopScreen extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           backgroundColor: darkGrey,
-          title: const Text("Shop with your points"),
+          title: const Text("Магазин подарков"),
         ),
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 10),
@@ -25,7 +25,7 @@ class ShopScreen extends StatelessWidget {
                   height: 30,
                 ),
                 const Text(
-                  "List of shops:",
+                  "Каталог:",
                   style: TextStyle(color: lighGrey, fontSize: 20),
                 ),
                 const SizedBox(

@@ -33,6 +33,15 @@ class MyDatabase with ChangeNotifier {
     }
   }
 
+  Future<void> deleteAccount() async{
+    try{
+      await _firestore.collection('users').doc(uid).delete();
+    }
+    catch (e){
+      print('error deleting doc: $e');
+    }
+  }
+
   Future<void> updateSteps(int newSteps) async{
     try{
       //int totalSteps = currentSteps + newSteps;

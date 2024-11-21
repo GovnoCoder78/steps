@@ -15,7 +15,7 @@ class ProfileScreen extends StatelessWidget {
 
   void onTap(BuildContext context, List<BoughtItem> allBoughtItems) {
     if (allBoughtItems.isEmpty) {
-      showSnackBar(context, "You don't have any log yet");
+      showSnackBar(context, "У вас еще нет покупок(");
     } else {
       showDialog(
           barrierDismissible: true,
@@ -28,8 +28,8 @@ class ProfileScreen extends StatelessWidget {
 
   Future<void> _signOut(BuildContext context) async {
     try {
+      await Provider.of<MyDatabase>(context, listen: false).deleteAccount();
       await FirebaseAuth.instance.signOut();
-      // Перенаправьте пользователя на экран входа или другой экран после выхода
       Navigator.push
         (context,
         MaterialPageRoute(builder: (context) => const LandingPage()
@@ -49,7 +49,7 @@ class ProfileScreen extends StatelessWidget {
             TextButton(
               onPressed: () => _signOut(context),
               child: const Text(
-                'Log Out',
+                'Выйти из аккаунта',
                 style: TextStyle(color: Colors.white,
                 fontSize: 16),
               ),
@@ -82,7 +82,7 @@ class ProfileScreen extends StatelessWidget {
                 builder: (context, myDatabase, _) => Column(
                   children: [
                     Text(
-                      "welcome\n ${myDatabase.name}",
+                      "Добро пожаловать\n ${myDatabase.name}",
                       style: const TextStyle(
                           fontWeight: FontWeight.bold, fontSize: 25),
                       textAlign: TextAlign.center,
@@ -91,7 +91,7 @@ class ProfileScreen extends StatelessWidget {
                       height: 30,
                     ),
                     Text(
-                      "You have\n ${myDatabase.points} Points",
+                      "У вас есть\n ${myDatabase.points} монет",
                       style: const TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 20,
@@ -116,7 +116,7 @@ class ProfileScreen extends StatelessWidget {
                               ),
                               color: activeColor),
                           child: const Text(
-                            'Open buy log',
+                            'История покупок',
                           ),
                         ),
                       ),

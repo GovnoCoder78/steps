@@ -17,7 +17,7 @@ class ShopItem extends StatelessWidget {
     final points = Provider.of<MyDatabase>(myContext, listen: false).points;
     if (points < shop.cost) {
       showSnackBar(
-          myContext, "you don't have enough balance to buy ${shop.name}");
+          myContext, "Не хватает монет на ${shop.name}");
     } else if (points >= shop.cost) {
       showDialog(
           barrierDismissible: false,
@@ -68,7 +68,7 @@ class ShopItem extends StatelessWidget {
                           fontWeight: FontWeight.w500),
                     ),
                     Text(
-                      "cost: ${shop.cost}",
+                      "Цена: ${shop.cost}",
                       style: const TextStyle(color: darkGrey),
                     )
                   ],
@@ -80,7 +80,7 @@ class ShopItem extends StatelessWidget {
                   child: Row(
                     children: const <Widget>[
                       Text(
-                        "Buy",
+                        "Купить",
                         style: TextStyle(color: activeColor, fontSize: 15),
                       ),
                       Icon(

@@ -5,7 +5,7 @@ import 'package:flutter_steps_tracker/widgets/my_elevated_button.dart';
 
 class AreYouSureDialog extends StatelessWidget {
   const AreYouSureDialog(
-      {Key? key, required this.onSubmit, this.title = "Are you sure?"})
+      {Key? key, required this.onSubmit, this.title = "Вы уверены?"})
       : super(key: key);
   final String title;
   final void Function() onSubmit;
@@ -36,7 +36,7 @@ class AreYouSureDialog extends StatelessWidget {
                 const MyCancelButton(),
                 MyElevatedButton(
                     onPressed: onSubmit,
-                    buttonText: 'Submit',
+                    buttonText: 'Купить',
                     elevatedButtonHeight: 30,
                     elevatedButtonWidth:
                         MediaQuery.of(context).size.width * 0.50),
