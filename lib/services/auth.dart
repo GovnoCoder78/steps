@@ -59,6 +59,10 @@ class Auth implements AuthBase {
           .collection("users")
           .doc(value.user!.uid)
           .update({"points": 0});
+      await firestore
+          .collection("users")
+          .doc(value.user!.uid)
+          .update({"steps": 0});
       return value;
     });
 

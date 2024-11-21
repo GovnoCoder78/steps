@@ -33,6 +33,31 @@ class MyDatabase with ChangeNotifier {
     }
   }
 
+  Future<void> updateSteps(int newSteps) async{
+    try{
+      //int totalSteps = currentSteps + newSteps;
+      await _firestore.collection('users').doc(uid).update({'steps': newSteps});
+    } catch (e){
+      print('Error while updating steps: $e');
+    }
+  }
+
+  Future<int> getSteps() async{
+    try {
+      DocumentSnapshot doc = await _firestore
+          .collection('users')
+          .doc(uid)
+          .get();
+      Map <String, dynamic> data = doc.data() as Map<String, dynamic>;
+      int currentSteps = data['steps'];
+      return currentSteps;
+    }
+    catch (e){
+      print('Error while get steps: $e');
+      return 0;
+    }
+  }
+
   Future<void> updatePoints() async {
     _points = points + 10;
     _firestore.collection("users").doc(uid).update({"points": _points});

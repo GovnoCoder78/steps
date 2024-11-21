@@ -41,9 +41,19 @@ class _StepsCounterScreenState extends State<StepsCounterScreen> {
     return modDistance;
   }
 
+  Future<void> _initializeSteps() async{
+    steps = await Provider.of<MyDatabase>(context, listen: false).getSteps();
+  }
+
+  @override
+  void initState(){
+    super.initState();
+    _initializeSteps();
+  }
+
   void getPoints() {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      showSnackBar(context, "Congrats you got 50 points");
+      showSnackBar(context, "Congrats you got 10 points");
       Provider.of<MyDatabase>(context, listen: false).updatePoints();
     });
   }
@@ -74,6 +84,7 @@ class _StepsCounterScreenState extends State<StepsCounterScreen> {
       if (steps % 10 == 0) {
         steps++;
         getPoints();
+        Provider.of<MyDatabase>(context, listen: false).updateSteps(steps);
       }
       return Text(
         "You walked ${steps} steps",
